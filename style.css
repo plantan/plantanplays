@@ -1,0 +1,28 @@
+html {
+    background-color: #0b0b17;
+    color: antiquewhite;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr;
+}
+
+.image {
+    /* width: 200px; */
+    aspect-ratio: 1 / 1;
+    background: #000;
+}
+
+.image > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
+}
+
+.li {
+    flex: 0 0 calc(25% - 100px);
+    border: 1px solid #4b4b4b;
+    min-height: 1.5rem;
+}
