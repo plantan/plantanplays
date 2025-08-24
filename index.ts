@@ -1,3 +1,4 @@
+import Bun from "bun";
 import homepage from "./index.html";
 
 const server = Bun.serve({
