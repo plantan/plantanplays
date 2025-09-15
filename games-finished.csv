@@ -1,6 +1,6 @@
 Title,Date,Comment,Platform,RAWGID
-Gigawing,,,MAME,
-Gigawing 2,,,MAME,
+Gigawing,,,MAME,giga-wing
+Gigawing 2,,,MAME,giga-wing-2
 Metal Slug: Super Vehicle-001,,,MAME,metal-slug
 Metal Slug 2: Super Vehicle-001/II,,,MAME,metal-slug-2
 Metal Slug 3,,,MAME,metal-slug-3
@@ -9,29 +9,29 @@ Metal Slug 5,,,MAME,metal-slug-5
 Armored Warriors,,,MAME,armored-warriors
 Mario & Luigi: Dream Team,,,3DS,mario-luigi-dream-team
 Pokemon Y,,,3DS,pokemon-y
-The Legend of Zelda: Ocarina of Time 3D,,,3DS
-The Legend of Zelda: A Link Between Worlds,,,3DS
-Phoenix Wright: Ace Attorney - Dual Destinies,,,3DS
-Phoenix Wright: Ace Attorney - Trials and Tribulations,,,3DS
-The Legend of Zelda: Majora's Mask 3D,2017-04,100%,3DS
-Pokemon Moon,2017-12-28,,3DS
-Metroid: Samus Returns,2019-02-15,,3DS
-Luigi's Mansion 3DS,2019-06-23,,3DS
-Luigi's Mansion 2,2019-07-16,"All Gems & Boos, Silver+",3DS
-Metroid Zero Mission,,,GBA
-Metroid Fusion,,,GBA
-The Legend of Zelda: Minish Cap,,,GBA
-Wario Ware Inc,,,GBA
-"Star Wars Rogue Squadron II: Rogue Leader",,,GC
-Medal of Honor: Frontline,,,GC
-Spider-Man: The Movie,,,GC
-XIII,,,GC
-Star Fox Adventures,,,GC
-Need For Speed Underground,,100%,GC
-Soul Calibur 2,,,GC
-Tom Clancy's Splinter Cell: Pandora Tomorrow,,,GC
-Super Monkey Ball,,Expert,GC
-Super Mario Sunshine,,,GC
+The Legend of Zelda: Ocarina of Time 3D,,,3DS,the-legend-of-zelda-ocarina-of-time-3d
+The Legend of Zelda: A Link Between Worlds,,,3DS,the-legend-of-zelda-a-link-between-worlds
+Phoenix Wright: Ace Attorney - Dual Destinies,,,3DS,ace-attorney-dual-destinies
+Phoenix Wright: Ace Attorney - Trials and Tribulations,,,3DS,phoenix-wright-ace-attorney-trials-and-tribulati-2
+The Legend of Zelda: Majora's Mask 3D,2017-04,100%,3DS,the-legend-of-zelda-majoras-mask-3d
+Pokemon Moon,2017-12-28,,3DS,pokemon-sun
+Metroid: Samus Returns,2019-02-15,,3DS,metroid-samus-returns
+Luigi's Mansion 3DS,2019-06-23,,3DS,luigis-mansion
+Luigi's Mansion 2,2019-07-16,"All Gems & Boos, Silver+",3DS,luigis-mansion-dark-moon
+Metroid Zero Mission,,,GBA,metroid-zero-mission
+Metroid Fusion,,,GBA,metroid-fusion
+The Legend of Zelda: Minish Cap,,,GBA,the-legend-of-zelda-the-minish-cap
+Wario Ware Inc,,,GBA,warioware-inc-mega-microgame
+"Star Wars Rogue Squadron II: Rogue Leader",,,GC,star-wars-rogue-squadron-ii-rogue-leader
+Medal of Honor: Frontline,,,GC,medal-of-honor-frontline
+Spider-Man: The Movie,,,GC,spider-man-the-movie
+XIII,,,GC,xiii
+Star Fox Adventures,,,GC,star-fox-adventures
+Need For Speed Underground,,100%,GC,need-for-speed-underground-3
+Soul Calibur 2,,,GC,soulcalibur-ii
+Splinter Cell: Pandora Tomorrow,,,GC,splinter-cell-pandora-tomorrow
+Super Monkey Ball,,Expert,GC,super-monkey-ball
+Super Mario Sunshine,,,GC,super-mario-sunshine
 Super Smash Bros. Melee,,,GC
 Resident Evil 4,,Hard,GC
 The Legend of Zelda: Wind Waker,,,GC
