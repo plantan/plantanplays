@@ -3,7 +3,7 @@ import homepage from "./index.html";
 
 const server = Bun.serve({
     port: 3000,
-    hostname: "172.22.23.103",
+    hostname: "0.0.0.0",
     routes: { "/": homepage },
 
     fetch: async (req) => {

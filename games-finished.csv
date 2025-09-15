@@ -1,37 +1,37 @@
-Title,Date,Comment,Platform,RAWGID
-Gigawing,,,MAME,giga-wing
-Gigawing 2,,,MAME,giga-wing-2
-Metal Slug: Super Vehicle-001,,,MAME,metal-slug
-Metal Slug 2: Super Vehicle-001/II,,,MAME,metal-slug-2
-Metal Slug 3,,,MAME,metal-slug-3
-Metal Slug 4,,,MAME,metal-slug-4
-Metal Slug 5,,,MAME,metal-slug-5
-Armored Warriors,,,MAME,armored-warriors
-Mario & Luigi: Dream Team,,,3DS,mario-luigi-dream-team
-Pokemon Y,,,3DS,pokemon-y
-The Legend of Zelda: Ocarina of Time 3D,,,3DS,the-legend-of-zelda-ocarina-of-time-3d
-The Legend of Zelda: A Link Between Worlds,,,3DS,the-legend-of-zelda-a-link-between-worlds
-Phoenix Wright: Ace Attorney - Dual Destinies,,,3DS,ace-attorney-dual-destinies
-Phoenix Wright: Ace Attorney - Trials and Tribulations,,,3DS,phoenix-wright-ace-attorney-trials-and-tribulati-2
-The Legend of Zelda: Majora's Mask 3D,2017-04,100%,3DS,the-legend-of-zelda-majoras-mask-3d
-Pokemon Moon,2017-12-28,,3DS,pokemon-sun
-Metroid: Samus Returns,2019-02-15,,3DS,metroid-samus-returns
-Luigi's Mansion 3DS,2019-06-23,,3DS,luigis-mansion
-Luigi's Mansion 2,2019-07-16,"All Gems & Boos, Silver+",3DS,luigis-mansion-dark-moon
-Metroid Zero Mission,,,GBA,metroid-zero-mission
-Metroid Fusion,,,GBA,metroid-fusion
-The Legend of Zelda: Minish Cap,,,GBA,the-legend-of-zelda-the-minish-cap
-Wario Ware Inc,,,GBA,warioware-inc-mega-microgame
-"Star Wars Rogue Squadron II: Rogue Leader",,,GC,star-wars-rogue-squadron-ii-rogue-leader
-Medal of Honor: Frontline,,,GC,medal-of-honor-frontline
-Spider-Man: The Movie,,,GC,spider-man-the-movie
-XIII,,,GC,xiii
-Star Fox Adventures,,,GC,star-fox-adventures
-Need For Speed Underground,,100%,GC,need-for-speed-underground-3
-Soul Calibur 2,,,GC,soulcalibur-ii
-Splinter Cell: Pandora Tomorrow,,,GC,splinter-cell-pandora-tomorrow
-Super Monkey Ball,,Expert,GC,super-monkey-ball
-Super Mario Sunshine,,,GC,super-mario-sunshine
+Title,Date,Comment,Platform,IGDBID
+Giga Wing,,,MAME,9162
+Giga Wing 2,,,MAME,9163
+Metal Slug: Super Vehicle-001,,,MAME,1404
+Metal Slug 2: Super Vehicle-001/II,,,MAME,1407
+Metal Slug 3,,,MAME,1408
+Metal Slug 4,,,MAME,1409
+Metal Slug 5,,,MAME,1410
+Armored Warriors,,,MAME,13688
+Mario & Luigi: Dream Team,,,3DS,3365
+Pokemon Y,,,3DS,2287
+The Legend of Zelda: Ocarina of Time 3D,,,3DS,1039
+The Legend of Zelda: A Link Between Worlds,,,3DS,2909
+Phoenix Wright: Ace Attorney - Dual Destinies,,,3DS,1432
+Phoenix Wright: Ace Attorney - Trials and Tribulations,,,3DS,221287
+The Legend of Zelda: Majora's Mask 3D,2017-04,100%,3DS,8593
+Pokemon Moon,2017-12-28,,3DS,18099
+Metroid: Samus Returns,2019-02-15,,3DS,37140
+Luigi's Mansion 3DS,2019-06-23,,3DS,90109
+Luigi's Mansion 2,2019-07-16,"All Gems & Boos, Silver+",3DS,2476
+Metroid Zero Mission,,,GBA,1107
+Metroid Fusion,,,GBA,1104
+The Legend of Zelda: Minish Cap,,,GBA,1035
+Wario Ware Inc,,,GBA,1703
+"Star Wars Rogue Squadron II: Rogue Leader",,,GC,
+Medal of Honor: Frontline,,,GC,
+Spider-Man: The Movie,,,GC,
+XIII,,,GC,
+Star Fox Adventures,,,GC,
+Need For Speed Underground,,100%,GC,
+Soul Calibur 2,,,GC,
+Splinter Cell: Pandora Tomorrow,,,GC,
+Super Monkey Ball,,Expert,GC,
+Super Mario Sunshine,,,GC,
 Super Smash Bros. Melee,,,GC
 Resident Evil 4,,Hard,GC
 The Legend of Zelda: Wind Waker,,,GC
