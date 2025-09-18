@@ -10,7 +10,8 @@ const response = await fetch(new Request(`https://id.twitch.tv/oauth2/token?clie
 const jsonResponse = await response.json();
 const access_token = jsonResponse["access_token"];
 
-Papa.parse(text, { header: true, complete(csv) {
+Papa.parse(text, { header: true, complete: papaparse_complete });
+async function papaparse_complete(csv) {
     const igdbids = new Array<string>();
     for (const row of csv.data) {
         const igdbid = row["IGDBID"];
@@ -20,7 +21,7 @@ Papa.parse(text, { header: true, complete(csv) {
     }
 
     const map = new Map<string, string>();
-    Promise.all(igdbids.map(async (igdbid) => {
+    for (const igdbid of igdbids) {
         const igdb_req = new Request("https://api.igdb.com/v4/covers", {
             method: "POST",
             body: `fields image_id; where game = ${igdbid};`,
@@ -30,16 +31,14 @@ Papa.parse(text, { header: true, complete(csv) {
                 "Authorization": `Bearer ${access_token}`
             },
         });
-        
-        await Bun.sleep(250); // IGDB rate limit is 4 requests per second
+    
+        await Bun.sleep(250);
         const res = await fetch(igdb_req);
         const json = await res.json();
-        if (json.length > 0) {
-            map.set(igdbid, `https://images.igdb.com/igdb/image/upload/t_cover_big/${json[0].image_id}.jpg`);
-        }
-    })).then(() => {
-        const writer = Bun.file("game-covers.json").writer();
-        writer.write(JSON.stringify(Object.fromEntries(map)));
-        writer.end()
-    });
-}});
+        map.set(igdbid, `https://images.igdb.com/igdb/image/upload/t_cover_big/${json[0].image_id}.jpg`);
+    }
+
+    const writer = Bun.file("game-covers.json").writer();
+    writer.write(JSON.stringify(Object.fromEntries(map)));
+    writer.end();
+}
