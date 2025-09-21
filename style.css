@@ -1,12 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap');
 
-html {
+* { transition: 0.2s; }
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #182126;
     color: antiquewhite;
     font-family: "Bitcount Grid Double", system-ui;
     font-size: 20px;
-    /* font-family: monospace; */
 }
+
+/* For the banner */
+body > img { max-width: 75vh; }
 
 .filter {
     display: flex;
@@ -14,124 +21,94 @@ html {
     padding-bottom: 5vh;
 }
 
-.banner {
-    width: 30%;
-    height: auto;
-    margin: auto;
-}
-
-.banner > img {
-    width: 100%;
-    height: 100%;
-}
-
 .grid {
-    width: 75%;
-    max-width: 1500px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    width: 75vw;
+    max-width: 1500px;
+    grid-template-columns: repeat(7, 1fr);
     gap: 1rem;
-    margin: auto;
 }
 
 .image {
-    display: grid;
     border-radius: 25px;
+    max-width: calc(1500px / 7 - 2rem);
+    aspect-ratio: 1 / 1.32;
+    overflow: hidden;
+    container-type: size;
     position: relative;
-    aspect-ratio: 1 / 1;
+    cursor: cell;
+    box-shadow: -2px -2px 5 rgba(0, 0, 0, 0.4), 5px 5px 5 rgba(0, 0, 0, 0.5);
 }
 
 .image img {
-    border-radius: 25px;
     width: 100%;
-    height: 10vw;
-    max-height: 200px;
-    object-fit: cover;
+    height: 100%;
+    object-fit: contain;
     filter: brightness(100%);
-    transition: 0.3s;
 }
 
-.image img:hover {
-    filter: brightness(30%);
-    cursor: cell;
-    transition: 0.1s;
-}
+.image img:hover { filter: brightness(25%); }
+.image:hover .image_text { opacity: 100%; }
 
-.image:hover .info {
-    color: antiquewhite;
-    opacity: 100%;
-    transition: 0.1s;
-}
-
-.info {
+.image_text {
     opacity: 0%;
     position: absolute;
     text-align: center;
     width: 90%;
+    font-size: 10cqw;
     pointer-events: none;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
-    transition: 0.3s;
 }
 
 .overlay {
     pointer-events: none;
     position: fixed;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.0);
-    transition: 0.2s;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .overlay_active {
     pointer-events: auto;
-    background-color: rgba(0, 0, 0, 0.8);
-    transition: 0.2s;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .game_dialog {
+    display: flex;
     position: fixed;
     transform: translate(-50%, 0);
     top: 100%;
     left: 50%;
-    width: 50vw;
-    height: 20rem;
-    max-width: 1024px;
-    /* min-height: 3rem;
-    max-height: 50rem; */
+    width: 40vw;
+    aspect-ratio: 2;
     background-color: rgb(22, 22, 31);
     border-radius: 25px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    transition: 0.2s;
+    container-type: size;
+    overflow: hidden;
 }
+
+.game_dialog:hover { background-color: rgb(31, 31, 44); }
 
 .game_dialog_active {
     top: 50%;
     transform: translate(-50%, -50%);
-    transition: 0.2s ease-out;
-}
-
-.game_dialog:hover {
-    background-color: rgb(31, 31, 44);
-    transition: 0.2s;
-}
-
-.game_dialog_grid {
-    display: grid;
-    position: absolute;
-    width: 100%;
-    height: 100%;
 }
 
 .game_dialog_info {
     display: flex;
-    align-items: center;
-    flex-direction: row;
-    padding-left: 1rem;
+    padding: 0 1rem;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 3cqw;
     color: gold;
+    text-shadow: 3px 3px 3 black;
+}
+
+#game_dialog_img {
+    height: 100%;
+    object-fit: contain;
 }

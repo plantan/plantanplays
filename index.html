@@ -1,38 +1,41 @@
 <!DOCTYPE html>
+<html>
 
-<html> 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Plantan Plays</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantan Plays</title>
 
-        <link href="style.css" rel="stylesheet" />
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="app.js" defer></script>
-    </head>
-    <body>
-        <div id="app">
-            <div class="banner"><img src="banner.png" /></div>
-            
-            <div class="filter">-- FILTER STUFF HERE --</div>
+    <link href="style.css" rel="stylesheet" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"
+        integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="app.js" defer></script>
+</head>
 
-            <div class="grid">
-                <div class="image" v-for="(row, index) in parsedCSV">
-                    <img :src="images[row[4]] == undefined ? 'https://i.pinimg.com/474x/06/72/ee/0672eec0c5816c3e4e03f7eeef9d8577.jpg' : images[row[4]]" @click="showOverlay = true; game_row = row;" />
-                    <div class="info">{{ row[0] }}</div>
-                </div>
-            </div>
+<body>
+    <img src="banner.png" />
 
-            <div class="overlay" :class="{ overlay_active: showOverlay }" @click="showOverlay = false"></div>
-            <div class="game_dialog" :class="{ game_dialog_active: showOverlay }">
-                <div class="game_dialog_grid">
-                    <span class="game_dialog_info"><b>Title:&nbsp;</b>{{ game_row[0] }}</span>
-                    <span class="game_dialog_info"><b>Date:&nbsp;</b>{{ game_row[1] }}</span>
-                    <span class="game_dialog_info"><b>Comment:&nbsp;</b>{{ game_row[2] }}</span>
-                    <span class="game_dialog_info"><b>Platform:&nbsp;</b>{{ game_row[3] }}</span>
-                </div>
-            </div>
+    <div class="filter">-- FILTER STUFF HERE --</div>
+
+    <div class="grid">
+        <div class="image" v-for="(row, index) in parsedCSV">
+            <img :src="images[row[4]]" @click="select_game(row, images[row[4]]);" />
+            <div class="image_text">{{ row[0] }}</div>
         </div>
-    </body>
+    </div>
+
+    <div class="overlay" :class="{ overlay_active: showOverlay }" @click="showOverlay = false;"></div>
+    <div class="game_dialog" :class="{ game_dialog_active: showOverlay }">
+        <img :src="selected_game_image" id="game_dialog_img" />
+        <div class="game_dialog_info">
+            <span><b>Title: </b>{{ selected_game_row[0] }}</span>
+            <span v-if="selected_game_row[1]"><b>Date: </b>{{ selected_game_row[1] }}</span>
+            <span v-if="selected_game_row[2]"><b>Comment: </b>{{ selected_game_row[2] }}</span>
+            <span><b>Platform: </b>{{ selected_game_row[3] }}</span>
+        </div>
+    </div>
+</body>
+
 </html>
