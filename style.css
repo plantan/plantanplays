@@ -13,7 +13,10 @@ body {
 }
 
 /* For the banner */
-body > img { max-width: 75vh; }
+body > img {
+    width: 50vw;
+    max-width: 1000px;
+}
 
 .filter {
     display: flex;
