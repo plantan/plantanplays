@@ -48,7 +48,7 @@ createApp({
             const banner = document.getElementById('banner');
             document.documentElement.style.setProperty("--banner-height", banner.height + 'px');
         }
-        
+
         let animationId;
         onMounted(() => {
             window.addEventListener("load", set_banner_height);

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap');
 
-* { 
+* {
     transition: 0.2s;
     margin: 0;
     padding: 0;
@@ -70,8 +70,13 @@ canvas {
     filter: brightness(100%);
 }
 
-.image img:hover { filter: brightness(25%); }
-.image:hover .image_text { opacity: 100%; }
+.image img:hover {
+    filter: brightness(25%);
+}
+
+.image:hover .image_text {
+    opacity: 100%;
+}
 
 .image_text {
     opacity: 0%;
@@ -113,7 +118,9 @@ canvas {
     overflow: hidden;
 }
 
-.game_dialog:hover { background-color: color-mix(in srgb, var(--bg-color) 97%, white 3%); }
+.game_dialog:hover {
+    background-color: color-mix(in srgb, var(--bg-color) 97%, white 3%);
+}
 
 .game_dialog_active {
     top: 50%;
