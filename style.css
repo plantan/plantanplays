@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap');
 
-* { transition: 0.2s; }
+* { 
+    transition: 0.2s;
+    margin: 0;
+    padding: 0;
+}
 
 :root {
     --bg-color: #060613;
-    --stripe-color: #141b1e;
+    --stripe-color: #141b1e67;
+    --banner-height: 0;
 }
 
 body {
@@ -16,13 +21,20 @@ body {
     font-family: "Bitcount Grid Double", system-ui;
     font-size: 20px;
 
+    min-height: 100vh;
     background-color: var(--bg-color);
-    background-image: linear-gradient(to bottom, var(--bg-color), var(--bg-color) 40vh, transparent 100vh),
+    background-image: linear-gradient(to bottom, var(--bg-color), var(--bg-color) var(--banner-height), transparent calc(var(--banner-height) + 150px)),
         repeating-linear-gradient(45deg, transparent, transparent 8px, var(--stripe-color) 8px, var(--stripe-color) 12px);
 }
 
-/* For the banner */
-body > img {
+canvas {
+    height: var(--banner-height);
+    width: 100%;
+}
+
+#banner {
+    position: absolute;
+    left: 25%;
     width: 50vw;
     max-width: 1000px;
 }
