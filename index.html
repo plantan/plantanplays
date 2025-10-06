@@ -20,15 +20,21 @@
 
     <div class="filter">
         <input type="text" v-model="search" placeholder="Search..." />
+
         <select v-model="platform">
             <option value="">All Platforms</option>
             <option v-for="plat in platforms" :value="plat">{{ plat }}</option>
+        </select>
+
+        <select v-model="year">
+            <option value="">All Years</option>
+            <option v-for="year in years" :value="year">{{ year }}</option>
         </select>
     </div>
 
     <div class="grid">
         <template v-for="(row, index) in parsedCSV">
-            <div class="image" v-if="row[0].toLowerCase().includes(search.toLowerCase()) && (row[3] === platform || platform === '')">
+            <div class="image" v-if="row[0].toLowerCase().includes(search.toLowerCase()) && (row[3] === platform || platform === '') && (new Date(row[1]).getFullYear() === year || year === '')">
                 <img :src="images[row[4]]" @click="select_game(row, images[row[4]]);" />
                 <div class="image_text">{{ row[0] }}</div>
             </div>

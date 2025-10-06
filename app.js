@@ -4,6 +4,8 @@ createApp({
     setup() {
         const showOverlay = ref(false);
         const parsedCSV = ref([]);
+        const year = ref("");
+        const years = ref([]);
         const platforms = ref([]);
         const platform = ref("");
         const search = ref("");
@@ -25,13 +27,28 @@ createApp({
                     complete(parseResult) {
                         parseResult.data.shift();
                         parsedCSV.value = parseResult.data;
+                        parsedCSV.value.sort((a, b) => {
+                            var dateA = new Date(a[1]);
+                            var dateB = new Date(b[1]);
+                            if (isNaN(dateA)) { dateA = new Date(1900, 0, 1); }
+                            if (isNaN(dateB)) { dateB = new Date(1900, 0, 1); }
+                            return dateB - dateA;
+                        });
 
                         parseResult.data.forEach(row => {
+                            const year = new Date(row[1]).getFullYear();
+                            if (!isNaN(year) && years.value.indexOf(year) === -1) {
+                                years.value.push(year);
+                            }
+
                             const platform = row[3];
                             if (platforms.value.indexOf(platform) === -1) {
                                 platforms.value.push(platform);
                             }
                         });
+
+                        years.value.sort((a, b) => b - a);
+                        platforms.value.sort();
                     }
                 }))
                 .catch(error => console.error("Error fetching games list:", error));
@@ -110,6 +127,8 @@ createApp({
             loadCSV,
             showOverlay,
             parsedCSV,
+            years,
+            year,
             platforms,
             platform,
             search,
