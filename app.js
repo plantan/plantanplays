@@ -9,7 +9,7 @@ createApp({
         const platforms = ref([]);
         const platform = ref("");
         const search = ref("");
-        const images = ref({});
+        const igdb = ref({});
         const selected_game_row = ref({});
         const selected_game_image = ref("");
         const star_canvas = ref(null);
@@ -21,42 +21,39 @@ createApp({
         }
 
         function loadCSV() {
-            fetch("games-finished.csv")
-                .then(response => response.text())
-                .then(csv => Papa.parse(csv, {
-                    complete(parseResult) {
-                        parseResult.data.shift();
-                        parsedCSV.value = parseResult.data;
-                        parsedCSV.value.sort((a, b) => {
-                            var dateA = new Date(a[1]);
-                            var dateB = new Date(b[1]);
-                            if (isNaN(dateA)) { dateA = new Date(1900, 0, 1); }
-                            if (isNaN(dateB)) { dateB = new Date(1900, 0, 1); }
-                            return dateB - dateA;
-                        });
-
-                        parseResult.data.forEach(row => {
-                            const year = new Date(row[1]).getFullYear();
-                            if (!isNaN(year) && years.value.indexOf(year) === -1) {
-                                years.value.push(year);
-                            }
-
-                            const platform = row[3];
-                            if (platforms.value.indexOf(platform) === -1) {
-                                platforms.value.push(platform);
-                            }
-                        });
-
-                        years.value.sort((a, b) => b - a);
-                        platforms.value.sort();
-                    }
-                }))
-                .catch(error => console.error("Error fetching games list:", error));
-
-            fetch("game-covers.json")
+            fetch("igdb.json")
                 .then(response => response.json())
-                .then(json => images.value = json)
-                .catch(error => console.error("Error fetching images:", error));
+                .then(json => igdb.value = json)
+                .finally(() => {
+                    fetch("games-finished.csv")
+                        .then(response => response.text())
+                        .then(csv => Papa.parse(csv, {
+                            complete(parseResult) {
+                                parseResult.data.shift();
+                                parsedCSV.value = parseResult.data;
+                                parsedCSV.value.sort((a, b) => {
+                                    const dateA = new Date(a[1] === '' ? igdb.value[a[4]].date : new Date(a[1]));
+                                    const dateB = new Date(b[1] === '' ? igdb.value[b[4]].date : new Date(b[1]));
+                                    return dateB - dateA;
+                                });
+
+                                parseResult.data.forEach(row => {
+                                    const year = new Date(row[1]).getFullYear();
+                                    if (!isNaN(year) && years.value.indexOf(year) === -1) {
+                                        years.value.push(year);
+                                    }
+
+                                    const platform = row[3];
+                                    if (platforms.value.indexOf(platform) === -1) {
+                                        platforms.value.push(platform);
+                                    }
+                                });
+
+                                years.value.sort((a, b) => b - a);
+                                platforms.value.sort();
+                            }
+                        }));
+                });
         }
 
         loadCSV();
@@ -132,7 +129,7 @@ createApp({
             platforms,
             platform,
             search,
-            images,
+            igdb,
             selected_game_row,
             selected_game_image,
             star_canvas

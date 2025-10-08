@@ -12,8 +12,8 @@ const server = Bun.serve({
             return new Response(Bun.file("./games-finished.csv"), {
                 headers: { "Content-Type": "text/csv" }
             });
-        } else if (url.pathname == "/game-covers.json") {
-            return new Response(Bun.file("./game-covers.json"), {
+        } else if (url.pathname == "/igdb.json") {
+            return new Response(Bun.file("./igdb.json"), {
                 headers: { "Content-Type": "application/json" }
             });
         }

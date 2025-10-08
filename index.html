@@ -32,10 +32,10 @@
         </select>
     </div>
 
-    <div class="grid">
+    <div class="grid" v-if="Object.keys(igdb).length > 0">
         <template v-for="(row, index) in parsedCSV">
             <div class="image" v-if="row[0].toLowerCase().includes(search.toLowerCase()) && (row[3] === platform || platform === '') && (new Date(row[1]).getFullYear() === year || year === '')">
-                <img :src="images[row[4]]" @click="select_game(row, images[row[4]]);" />
+                <img :src="igdb[row[4]].cover_url" @click="select_game(row, igdb[row[4]].cover_big_url);" />
                 <div class="image_text">{{ row[0] }}</div>
             </div>
         </template>
