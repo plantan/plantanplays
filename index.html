@@ -35,7 +35,7 @@
     <div class="grid" v-if="Object.keys(igdb).length > 0">
         <template v-for="(row, index) in parsedCSV">
             <div class="image" v-if="row[0].toLowerCase().includes(search.toLowerCase()) && (row[3] === platform || platform === '') && (new Date(row[1]).getFullYear() === year || year === '')">
-                <img :src="igdb[row[4]].cover_url" @click="select_game(row, igdb[row[4]].cover_big_url);" />
+                <img :src="igdb[row[4]].cover_url" loading="lazy" @click="select_game(row, igdb[row[4]].cover_big_url);" />
                 <div class="image_text">{{ row[0] }}</div>
             </div>
         </template>
@@ -43,7 +43,7 @@
 
     <div class="overlay" :class="{ overlay_active: showOverlay }" @click="showOverlay = false;"></div>
     <div class="game_dialog" :class="{ game_dialog_active: showOverlay }">
-        <img :src="selected_game_image" id="game_dialog_img" />
+        <img :src="selected_game_image" loading="lazy" id="game_dialog_img" />
         <div class="game_dialog_info">
             <span><b>Title: </b>{{ selected_game_row[0] }}</span>
             <span v-if="selected_game_row[1]"><b>Date: </b>{{ selected_game_row[1] }}</span>
