@@ -7,7 +7,7 @@
     <title>Plantan Plays</title>
 
     <link href="style.css" rel="stylesheet" />
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"
         integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -16,7 +16,7 @@
 
 <body>
     <canvas ref="star_canvas" id="star-canvas"></canvas>
-    <img src="banner.png" id="banner" />
+    <img src="banner.webp" id="banner" />
 
     <div class="filter">
         <input type="text" v-model="search" placeholder="Search..." />
