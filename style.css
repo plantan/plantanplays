@@ -178,6 +178,9 @@ option {
 .game_dialog,
 .game_dialog_active,
 .overlay,
-.overlay_active {
-    transition: 0.2s ease-out
+.overlay_active,
+.image_text,
+.image,
+img:hover {
+    transition: 0.2s
 }
