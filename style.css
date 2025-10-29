@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap');
 
 * {
-    transition: 0.2s;
     margin: 0;
     padding: 0;
 }
@@ -30,14 +29,12 @@ body {
 canvas {
     height: var(--banner-height);
     width: 100%;
-    transition: 0.0s;
 }
 
 #banner {
     position: absolute;
     width: 50vw;
     max-width: 1000px;
-    transition: 0.0s;
 }
 
 .filter {
@@ -176,4 +173,11 @@ option {
 #game_dialog_img {
     height: 100%;
     object-fit: contain;
+}
+
+.game_dialog,
+.game_dialog_active,
+.overlay,
+.overlay_active {
+    transition: 0.2s ease-out
 }
