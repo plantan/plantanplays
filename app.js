@@ -12,7 +12,6 @@ createApp({
         const igdb = ref({});
         const selected_game_row = ref({});
         const selected_game_image = ref("");
-        const star_canvas = ref(null);
 
         function select_game(row, image_url) {
             showOverlay.value = true;
@@ -58,37 +57,43 @@ createApp({
 
         loadCSV();
 
-        function set_banner_height() {
-            const banner = document.getElementById('banner');
-            document.documentElement.style.setProperty("--banner-height", banner.height + 'px');
-        }
-
         let animationId;
         onMounted(() => {
-            window.addEventListener("load", set_banner_height);
-            window.addEventListener("resize", set_banner_height);
-
-            const canvas = star_canvas.value;
-            const ctx = canvas.getContext("2d");
-
-            function resize() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
+            function set_banner_height() {
+                const banner = document.getElementById('banner');
+                document.documentElement.style.setProperty("--banner-height", banner.height + 'px');
             }
-            window.addEventListener("resize", resize);
-            resize();
 
-            const starCount = 120;
-            const stars = Array.from({ length: starCount }, () => ({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                r: Math.random() * 1.5 + 0.5,
-                alpha: Math.random(),
-                blinkSpeed: Math.random() * 0.02 + 0.005,
-                dx: (Math.random() - 0.5) * 0.2,
-                dy: (Math.random() - 0.5) * 0.2,
-            }));
+            const canvas = document.getElementById('star-canvas');
+            function resize_star_canvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = document.getElementById('banner').height;
+            }
 
+            function make_stars() {
+                const starCount = window.innerWidth * 0.1;
+                return Array.from({ length: starCount }, () => ({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    r: Math.max(1, Math.random() * canvas.height * 0.004),
+                    alpha: Math.random(),
+                    blinkSpeed: Math.random() * 0.005 + 0.005,
+                    dx: (Math.random() - 0.5) * 0.1,
+                    dy: (Math.random() - 0.5) * 0.1,
+                }));
+            }
+
+            let stars = [{}];
+            function resize() {
+                set_banner_height();
+                resize_star_canvas();
+                stars = make_stars()
+            }
+
+            window.addEventListener("load", () => { resize(); });
+            window.addEventListener("resize", () => { resize(); });
+
+            const ctx = canvas.getContext("2d");
             function animate() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 for (const s of stars) {
@@ -131,8 +136,7 @@ createApp({
             search,
             igdb,
             selected_game_row,
-            selected_game_image,
-            star_canvas
+            selected_game_image
         };
     }
 }).mount('body');

@@ -30,12 +30,14 @@ body {
 canvas {
     height: var(--banner-height);
     width: 100%;
+    transition: 0.0s;
 }
 
 #banner {
     position: absolute;
     width: 50vw;
     max-width: 1000px;
+    transition: 0.0s;
 }
 
 .filter {
@@ -71,8 +73,20 @@ option {
     display: grid;
     width: 75vw;
     max-width: 1400px;
-    grid-template-columns: repeat(6, 1fr);
     gap: 1rem;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+@media (max-width: 1000px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 .image {
