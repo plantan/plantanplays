@@ -2,7 +2,7 @@ import Bun from "bun";
 import homepage from "./index.html";
 
 const server = Bun.serve({
-    port: 80,
+    port: 3000,
     hostname: "0.0.0.0",
     routes: { "/": homepage },
 
