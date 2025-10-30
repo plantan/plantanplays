@@ -171,6 +171,7 @@ select {
 .overlay_active,
 .image_text,
 .image,
+.image img,
 img:hover {
     transition: 0.2s
 }
