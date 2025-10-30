@@ -1,14 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap');
-
 * {
     margin: 0;
     padding: 0;
+    font-family: monospace;
 }
 
 :root {
     --bg-color: #060613;
     --stripe-color: #141b1e67;
     --banner-height: 0;
+    --grid-max-width: min(1400px, 97vw);
+    --blur: 0px;
+    --brightness: 1;
+    --pointer-event: auto;
 }
 
 body {
@@ -17,7 +20,6 @@ body {
     align-items: center;
 
     color: antiquewhite;
-    font-family: "Bitcount Grid Double", system-ui;
     font-size: 20px;
 
     min-height: 100vh;
@@ -33,8 +35,7 @@ canvas {
 
 #banner {
     position: absolute;
-    width: 50vw;
-    max-width: 1000px;
+    width: min(80%, 1100px);
 }
 
 .filter {
@@ -58,29 +59,29 @@ select {
     box-shadow: 0px 0px 20px -18px;
 
     font-size: 1rem;
-    font-family: "Bitcount Grid Double", system-ui;
     text-align: center;
-}
-
-option {
-    font-family: monospace;
 }
 
 .grid {
     display: grid;
-    width: 75vw;
-    max-width: 1400px;
-    gap: 1rem;
     grid-template-columns: repeat(6, 1fr);
+    width: var(--grid-max-width);
+    gap: max(0.5vw, 5px);
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1400px) {
+    .grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media (max-width: 1100px) {
     .grid {
         grid-template-columns: repeat(4, 1fr);
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .grid {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -123,32 +124,20 @@ option {
     transform: translate(-50%, -50%);
 }
 
-.overlay {
-    pointer-events: none;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-}
-
-.overlay_active {
-    pointer-events: auto;
-    background-color: rgba(0, 0, 0, 0.9);
-}
-
 .game_dialog {
+    filter: brightness(1);
     display: flex;
     position: fixed;
     transform: translate(-50%, 0);
     top: 100%;
     left: 50%;
-    width: 40vw;
+    width: var(--grid-max-width);
     aspect-ratio: 2;
     background-color: var(--bg-color);
     border-radius: 25px;
     container-type: size;
     overflow: hidden;
+    opacity: 0;
 }
 
 .game_dialog:hover {
@@ -158,6 +147,7 @@ option {
 .game_dialog_active {
     top: 50%;
     transform: translate(-50%, -50%);
+    opacity: 1;
 }
 
 .game_dialog_info {
@@ -183,4 +173,16 @@ option {
 .image,
 img:hover {
     transition: 0.2s
+}
+
+#banner,
+#star_canvas,
+.filter,
+.image {
+    filter: blur(var(--blur));
+    pointer-events: var(--pointer-event);
+}
+
+.image {
+    filter: brightness(var(--brightness)) blur(var(--blur));
 }

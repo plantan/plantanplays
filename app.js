@@ -14,9 +14,20 @@ createApp({
         const selected_game_image = ref("");
 
         function select_game(row, image_url) {
-            showOverlay.value = true;
             selected_game_row.value = row;
             selected_game_image.value = image_url;
+            
+            showOverlay.value = true;
+            document.documentElement.style.setProperty("--brightness", "0.5");
+            document.documentElement.style.setProperty("--blur", "2px");
+            document.documentElement.style.setProperty("--pointer-event", "none");
+        }
+
+        function unselect_game() {
+            showOverlay.value = false;
+            document.documentElement.style.setProperty("--brightness", "1");
+            document.documentElement.style.setProperty("--blur", "0px");
+            document.documentElement.style.setProperty("--pointer-event", "auto");
         }
 
         function loadCSV() {
@@ -61,10 +72,10 @@ createApp({
         onMounted(() => {
             function set_banner_height() {
                 const banner = document.getElementById('banner');
-                document.documentElement.style.setProperty("--banner-height", banner.height + 'px');
+                document.documentElement.style.setProperty("--banner-height", `${banner.height}px`);
             }
 
-            const canvas = document.getElementById('star-canvas');
+            const canvas = document.getElementById('star_canvas');
             function resize_star_canvas() {
                 canvas.width = window.innerWidth;
                 canvas.height = document.getElementById('banner').height;
@@ -75,7 +86,7 @@ createApp({
                 return Array.from({ length: starCount }, () => ({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    r: Math.max(1, Math.random() * canvas.height * 0.004),
+                    r: Math.max(0.75, Math.random() * canvas.height * 0.002),
                     alpha: Math.random(),
                     blinkSpeed: Math.random() * 0.005 + 0.005,
                     dx: (Math.random() - 0.5) * 0.1,
@@ -87,7 +98,7 @@ createApp({
             function resize() {
                 set_banner_height();
                 resize_star_canvas();
-                stars = make_stars()
+                stars = make_stars();
             }
 
             window.addEventListener("load", () => { resize(); });
@@ -126,6 +137,7 @@ createApp({
 
         return {
             select_game,
+            unselect_game,
             loadCSV,
             showOverlay,
             parsedCSV,

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Plantan Plays</title>
 
     <link href="style.css" rel="stylesheet" />
@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <canvas id="star-canvas"></canvas>
+    <canvas id="star_canvas"></canvas>
     <img src="banner.webp" id="banner" />
 
     <div class="filter">
@@ -34,15 +34,16 @@
 
     <div class="grid" v-if="Object.keys(igdb).length > 0">
         <template v-for="(row, index) in parsedCSV">
-            <div class="image" v-if="row[0].toLowerCase().includes(search.toLowerCase()) && (row[3] === platform || platform === '') && (new Date(row[1]).getFullYear() === year || year === '')">
-                <img :src="igdb[row[4]].cover_url" loading="lazy" @click="select_game(row, igdb[row[4]].cover_big_url);" />
+            <div class="image"
+                v-if="row[0].toLowerCase().includes(search.toLowerCase()) && (row[3] === platform || platform === '') && (new Date(row[1]).getFullYear() === year || year === '')">
+                <img :src="igdb[row[4]].cover_url" loading="lazy"
+                    @click="select_game(row, igdb[row[4]].cover_big_url);" />
                 <div class="image_text">{{ row[0] }}</div>
             </div>
         </template>
     </div>
 
-    <div class="overlay" :class="{ overlay_active: showOverlay }" @click="showOverlay = false;"></div>
-    <div class="game_dialog" :class="{ game_dialog_active: showOverlay }">
+    <div class="game_dialog" :class="{ game_dialog_active: showOverlay }" @click="unselect_game();">
         <img :src="selected_game_image" loading="lazy" id="game_dialog_img" />
         <div class="game_dialog_info">
             <span><b>Title: </b>{{ selected_game_row[0] }}</span>
@@ -51,6 +52,7 @@
             <span><b>Platform: </b>{{ selected_game_row[3] }}</span>
         </div>
     </div>
+
 </body>
 
 </html>
